@@ -1,6 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.text.Annotation;
 import java.util.Properties;
@@ -9,7 +7,7 @@ public class Injector<T> {
     private Properties properties;
     Injector(String filePath) throws IOException {
         properties = new Properties();
-        properties.load(new FileReader(filePath));
+        properties.load(new FileInputStream(new File(filePath)));
     }
 
     T inject(T object) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
